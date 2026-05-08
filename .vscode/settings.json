@@ -1,0 +1,13 @@
+{
+<<<<<<< HEAD
+    "files.associations": {
+        "iostream": "cpp"
+    },
+    "C_Cpp.errorSquiggles": "disabled"
+=======
+    "C_Cpp.errorSquiggles": "disabled",
+    "files.associations": {
+        "iostream": "cpp"
+    }
+>>>>>>> 2c5dac7b827145aa6759732097f8ad19e185aed1
+}
