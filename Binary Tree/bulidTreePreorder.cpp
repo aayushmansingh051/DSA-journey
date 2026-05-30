@@ -30,5 +30,5 @@ int main(){
     Node*root=buildTree(nodes);
 
     cout<<"root= "<<root->data<<endl;
-    return 0;
+    
 }
