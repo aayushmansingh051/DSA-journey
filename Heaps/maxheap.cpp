@@ -1,0 +1,68 @@
+#include<iostream>
+#include<vector>
+using namespace std;
+class Heap{
+    vector<int>vec;
+    public:
+    void push(int val){
+        //step 1  push val
+        vec.push_back(val);
+
+        //step 2
+        int x= vec.size()-1;  // child indx
+        int paridx=(x-1)/2;  //  parent indx
+
+        while(x>0 && vec[x]>vec[paridx]){
+            swap(vec[x],vec[paridx]);
+            x=paridx;
+            paridx=(x-1)/2;
+        }
+    }
+    void heapify(int i){
+        while(true){
+        int l=2*i+1;
+        int r=2*i+2;
+        int maxIdx=i;
+        if(l<vec.size() && vec[l]>vec[maxIdx]){
+            maxIdx=l;
+        }
+        if(r<vec.size() && vec[r]>vec[maxIdx]){
+            maxIdx=r;
+        }
+        if(maxIdx==i){
+            break;
+        }
+        else{
+            swap(vec[i],vec[maxIdx]);
+            i=maxIdx;
+        
+        
+    }
+    }
+    }
+    void pop(){
+    //step1
+    swap(vec[0],vec[vec.size()-1]);
+    //step2 delete
+    vec.pop_back();
+    //step3 modify
+    heapify(0);
+
+    }
+       int empty(){
+            return vec.size()==0;
+        }
+        int top(){
+            return vec[0];
+        }
+};
+int main(){
+    Heap heap;
+    heap.push(50);
+    heap.push(10);
+    heap.push(100);
+    while(!heap.empty()){
+    cout<<"top: "<<heap.top()<<endl;
+       heap.pop(); 
+   }
+}
