@@ -27,7 +27,7 @@ public:
     void heapsort(vector<int>& arr) {
         int n = arr.size();
 
-        // Build max heap
+        // Build max heap               //why n/2-1? they a leaf noden/1 till n so, n/2-1 till 0; 
         for (int i = n / 2 - 1; i >= 0; i--) {
             heapify(arr, n, i);
         }
