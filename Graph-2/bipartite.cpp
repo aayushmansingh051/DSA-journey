@@ -9,7 +9,7 @@ class Graph {
     int v;          // number of vertices
     bool isundir;   // directed or undirected
 public:
-    Graph(int v, bool isundir = true) {
+    Graph(int v, bool isundir = false) {
         this->v = v;
         l = new list<int>[v];
         this->isundir = isundir;
@@ -76,9 +76,9 @@ public:
 };
 int main() {
     Graph g(4, true); // directed graph
-    g.addEdge(1, 0);
+    g.addEdge(0, 1);
     g.addEdge(0, 2);
-    g.addEdge(3, 0);
+    g.addEdge(1, 3);
     g.addEdge(2, 3); // cycle here
 
     if (g.isCycleDir()) {
