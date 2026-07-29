@@ -16,6 +16,7 @@ public:
 
 void dijkstra(int src, vector<vector<Edge>> &graph, int V) {
     // Min-heap: (distance, vertex)
+    //priority_queue<int,vector<int>,greater<int>>pq
     priority_queue<pair<int,int>, vector<pair<int,int>>, greater<pair<int,int>>> pq;
     vector<int> dist(V, INT_MAX);
 
@@ -31,9 +32,9 @@ void dijkstra(int src, vector<vector<Edge>> &graph, int V) {
         if (d > dist[u]) continue;
 
         // Relaxation step
-        for (auto edge : graph[u]) {
-            int v = edge.v;
-            int wt = edge.wt;
+        for (auto &e: graph[u]) {
+            int v = e.v;
+            int wt = e.wt;
 
             if (dist[v] > dist[u] + wt){
                 dist[v] = dist[u] + wt;
