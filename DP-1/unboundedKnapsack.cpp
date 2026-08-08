@@ -2,7 +2,7 @@
 #include <vector>
 using namespace std;
 
-int Knapsack(vector<int> val, vector<int> wt, int W, int n) {
+int Unbounded_Knapsack(vector<int> val, vector<int> wt, int W, int n) {
     vector<vector<int>> dp(n+1, vector<int>(W+1, 0));
 
     for (int i = 1; i <= n; i++) {
@@ -12,7 +12,7 @@ int Knapsack(vector<int> val, vector<int> wt, int W, int n) {
 
             if (itemwt <= j) {
                 // include or exclude
-                dp[i][j] = max(itemval + dp[i-1][j-itemwt], dp[i-1][j]);
+                dp[i][j] = max(itemval + dp[i][j-itemwt], dp[i-1][j]); //old knapsack max(itemval + dp[i-1][j-itemwt], dp[i-1][j])
             } else {
                 // exclude
                 dp[i][j] = dp[i-1][j];
@@ -28,6 +28,6 @@ int main() {
     int W = 7;
     int n = val.size();
 
-    cout << "Knapsack: " << Knapsack(val, wt, W, n);
+    cout << "Knapsack: " << Unbounded_Knapsack(val, wt, W, n);
     return 0;
 }
