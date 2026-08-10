@@ -1,29 +1,29 @@
-#include <iostream>
-#include <string>
-#include <vector>
-#include <unordered_set>
+#include<iostream>
+#include<string>
+#include<vector>
+#include<unordered_set>
 #include <algorithm>
+
 using namespace std;
-
-int longest_increasing_subsequence(vector<int> arr) {
-    unordered_set<int> s(arr.begin(), arr.end()); // unique values
-    vector<int> arr2(s.begin(), s.end());         // store in array
-    sort(arr2.begin(), arr2.end());               // sort array
-
-    int n = arr.size();
-    int m = arr2.size();
-    vector<vector<int>> dp(n+1, vector<int>(m+1, 0));
-
-    for(int i = 1; i <= n; i++) {
-        for(int j = 1; j <= m; j++) {
-            if(arr[i-1] == arr2[j-1]) {
-                dp[i][j] = 1 + dp[i-1][j-1];
-            } else {
-                dp[i][j] = max(dp[i-1][j], dp[i][j-1]);
+int longest_increasing_subsequence(vector<int>arr){
+    unordered_set<int>s(arr.begin(),arr.end());//unique value -O(n)
+    vector<int>arr2(s.begin(),s.end());// stored in array
+    sort(arr2.begin(),arr2.end()); //sort the array in-o(nlogn)
+    //LCS=>LIS
+    int n=arr.size();
+    int m=arr2.size();
+    vector<vector<int>>dp(n+1,vector<int>(m+1,0));
+    for(int i=1;i<=n;i++){
+        for(int j=1;j<=m;j++){
+            if(arr[i-1]==arr2[j-1]){
+                dp[i][j]=1+dp[i-1][j-1];
+            }else{
+                dp[i][j]=max(dp[i-1][j],dp[i][j-1]);
             }
         }
     }
-    return dp[n][m];
+return dp[n][m];
+
 }
 
 int main() {
